@@ -7,3 +7,5 @@ dist
 
 # Generated — do not edit
 app/shared/api/
+
+.eslintcache

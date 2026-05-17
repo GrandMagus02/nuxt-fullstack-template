@@ -1,7 +1,7 @@
 {
   "name": "nuxt-fullstack-template",
-  "private": true,
   "type": "module",
+  "private": true,
   "scripts": {
     "dev": "nuxt dev",
     "build": "nuxt build",
@@ -16,18 +16,6 @@
     "db:up": "docker compose up -d",
     "db:down": "docker compose down",
     "prepare": "husky"
-  },
-  "lint-staged": {
-    "*.{ts,vue,tsx}": "eslint --fix"
-  },
-  "pnpm": {
-    "onlyBuiltDependencies": [
-      "@parcel/watcher",
-      "@prisma/engines",
-      "esbuild",
-      "prisma",
-      "vue-demi"
-    ]
   },
   "dependencies": {
     "@hey-api/client-fetch": "^0.13.1",
@@ -47,10 +35,23 @@
     "@hey-api/openapi-ts": "^0.97.1",
     "dotenv": "^17.4.2",
     "eslint": "^10.4.0",
+    "eslint-plugin-format": "^2.0.1",
     "husky": "^9.1.7",
     "lint-staged": "^17.0.5",
     "prisma": "^7.8.0",
     "typescript": "^6.0.3",
     "vue-tsc": "^3.2.9"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "@parcel/watcher",
+      "@prisma/engines",
+      "esbuild",
+      "prisma",
+      "vue-demi"
+    ]
+  },
+  "lint-staged": {
+    "*.{ts,vue,tsx}": "eslint --fix"
   }
 }
