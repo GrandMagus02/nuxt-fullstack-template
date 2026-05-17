@@ -1,3 +1,5 @@
+import process from 'node:process'
+
 export default defineNuxtConfig({
   compatibilityDate: '2024-11-01',
   future: {
@@ -31,18 +33,10 @@ export default defineNuxtConfig({
   },
 
   runtimeConfig: {
-    authSecret: '',
-    databaseUrl: '',
-    googleClientId: '',
-    googleClientSecret: '',
-    githubClientId: '',
-    githubClientSecret: '',
-    resendApiKey: '',
-    fromEmail: '',
     public: {
-      googleAuthEnabled: false,
-      githubAuthEnabled: false,
-      magicLinkEnabled: false,
+      googleAuthEnabled: !!process.env.AUTH_GOOGLE_CLIENT_ID,
+      githubAuthEnabled: !!process.env.AUTH_GITHUB_CLIENT_ID,
+      magicLinkEnabled: !!process.env.AUTH_RESEND_API_KEY,
       emailPasswordEnabled: true,
     },
   },
