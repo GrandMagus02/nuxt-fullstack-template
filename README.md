@@ -41,7 +41,10 @@ The provider is registered server-side and its sign-in button appears automatica
 ```
 app/
   app.vue              # root: NuxtLayout + NuxtPage
-  pages/               # routes
+  pages/               # routes — index.vue, dashboard.vue (auth-protected)
+  middleware/          # route guards — auth.ts (opt-in via definePageMeta)
+  plugins/             # app init — auth.ts warms the better-auth session (SSR-safe)
+  layers/              # Nuxt Layers (NOT FSD layers) — reusable mini-Nuxt units
   shared/
     api/                # GENERATED (gitignored) — do not edit
     schemas/            # hand-written Zod schemas
@@ -54,7 +57,13 @@ prisma/schema.prisma   # User / Session / Account / Verification
 openapi.yaml           # source of truth for hey-api
 ```
 
+Most `app/` subdirectories carry a `CLAUDE.md` documenting their conventions (FSD slice rules, Nuxt-layer vs. FSD-layer naming, etc.).
+
 Adding a feature slice: create `app/features/<name>/ui/*.vue` and `app/features/<name>/composables/*.ts` — components and composables auto-import per the FSD config in `nuxt.config.ts`.
+
+Protecting a route: add `definePageMeta({ middleware: 'auth' })` — unauthenticated users redirect to `/` with a `?redirect=` back-link (see `pages/dashboard.vue`).
+
+Adding a Nuxt Layer: scaffold `app/layers/<name>/` then register in root `nuxt.config.ts` via `extends: ['./app/layers/<name>']`. Layers are not auto-scanned and must stay self-contained.
 
 ## Scripts
 
