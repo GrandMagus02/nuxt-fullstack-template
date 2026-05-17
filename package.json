@@ -1,0 +1,53 @@
+{
+  "name": "nuxt-fullstack-template",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "nuxt dev",
+    "build": "nuxt build",
+    "preview": "nuxt preview",
+    "typecheck": "nuxt typecheck",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "api:generate": "openapi-ts",
+    "db:generate": "prisma generate",
+    "db:migrate": "prisma migrate dev",
+    "db:push": "prisma db push",
+    "db:up": "docker compose up -d",
+    "db:down": "docker compose down",
+    "prepare": "husky"
+  },
+  "lint-staged": {
+    "*.{ts,vue,tsx}": "eslint --fix"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "@parcel/watcher",
+      "@prisma/engines",
+      "esbuild",
+      "prisma",
+      "vue-demi"
+    ]
+  },
+  "dependencies": {
+    "@hey-api/client-fetch": "^0.13.1",
+    "@nuxt/ui": "^4.7.1",
+    "@pinia/colada": "^1.3.0",
+    "@pinia/nuxt": "^0.11.3",
+    "@prisma/client": "^7.8.0",
+    "better-auth": "^1.6.11",
+    "nuxt": "^4.4.5",
+    "pinia": "^3.0.4",
+    "zod": "^4.4.3"
+  },
+  "devDependencies": {
+    "@antfu/eslint-config": "^9.0.0",
+    "@hey-api/openapi-ts": "^0.97.1",
+    "eslint": "^10.4.0",
+    "husky": "^9.1.7",
+    "lint-staged": "^17.0.5",
+    "prisma": "^7.8.0",
+    "typescript": "^6.0.3",
+    "vue-tsc": "^3.2.9"
+  }
+}
